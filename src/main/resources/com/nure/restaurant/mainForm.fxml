@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="borderPane" cache="true" prefHeight="500.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nure.restaurant.MainController">
+   <center>
+      <TabPane fx:id="tabPane" prefHeight="500.0" prefWidth="728.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="25.0" tabMaxWidth="80.0" tabMinHeight="25.0" tabMinWidth="80.0">
+        <tabs>
+          <Tab text="Warehouse">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableViewWarehouse" layoutY="38.0" prefHeight="432.0" prefWidth="651.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <padding>
+                              <Insets bottom="20.0" left="10.0" right="1.0" top="10.0" />
+                           </padding>
+                        </TableView>
+                        <TextField fx:id="warehouseSearchField" alignment="CENTER" focusTraversable="false" layoutX="9.0" layoutY="14.0" onKeyTyped="#searchFieldWarehouseAction" prefHeight="26.0" prefWidth="631.0" promptText="Search" styleClass="searchField" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Create order">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="cartView" layoutX="11.0" layoutY="226.0" prefHeight="238.0" prefWidth="641.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy></TableView>
+                        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="187.0" prefWidth="610.0">
+                           <children>
+                              <ComboBox fx:id="productComboBox" editable="true" layoutX="101.0" layoutY="27.0" prefHeight="26.0" prefWidth="197.0" promptText="Chose product" styleClass=".comboBox" />
+                              <Button layoutX="398.0" layoutY="77.0" mnemonicParsing="false" onAction="#addSupplierButtonPressed" prefHeight="34.0" prefWidth="120.0" styleClass="ordersButton" text="Add supplier" />
+                              <Button layoutX="528.0" layoutY="153.0" mnemonicParsing="false" onAction="#placeOrderPressed" styleClass="ordersButton" text="Place order" />
+                              <ChoiceBox fx:id="supplierBox" layoutX="320.0" layoutY="27.0" prefHeight="26.0" prefWidth="197.0" />
+                              <Label layoutX="320.0" layoutY="7.0" text="Choose supplier:" textFill="#f4eee0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="101.0" layoutY="7.0" text="Choose Product:" textFill="#f4eee0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="266.0" layoutY="126.0" mnemonicParsing="false" onAction="#addToCartPressed" styleClass="ordersButton" text="Add to cart" />
+                              <Button layoutX="101.0" layoutY="78.0" mnemonicParsing="false" onAction="#addProductButtonPressed" styleClass="ordersButton" text="Add new product" />
+                              <TextField fx:id="quantityTextField" layoutX="279.0" layoutY="79.0" prefHeight="26.0" prefWidth="62.0" promptText="Quantity" />
+                              <Label layoutX="267.0" layoutY="59.0" text="Input Quantity:" textFill="#f4eee0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="measurementLabel" layoutX="348.0" layoutY="86.0" textFill="#f4eee0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <Label layoutX="264.0" layoutY="168.0" text="Total sum:" textFill="#f4eee0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="orderSumLabel" layoutX="326.0" layoutY="169.0" text="0" textFill="#32915a">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER" layoutX="248.0" layoutY="109.0" prefHeight="14.0" prefWidth="123.0">
+                                 <children>
+                                    <Label fx:id="createOrderErorLabel" prefHeight="18.0" textFill="#963232">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Hyperlink layoutX="518.0" layoutY="2.0" onAction="#pendingOrdersShow" text="Pending Orders" textFill="#f4eee0" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Hyperlink>
+                           </children>
+                           <styleClass>
+                              <String fx:value="contentBox" />
+                              <String fx:value="contentBoxCreateOrder" />
+                           </styleClass>
+                        </AnchorPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+                <Tab text="Write-Off">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="tableViewWriteOff" layoutY="40.0" prefHeight="429.0" prefWidth="651.0">
+                                    <padding>
+                                        <Insets bottom="20.0" left="10.0" right="1.0" top="10.0" />
+                                    </padding>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                                </TableView>
+                        <TextField fx:id="writeOffSearchField" alignment="CENTER" layoutX="12.0" layoutY="14.0" onKeyTyped="#searchFieldWriteOffAction" prefHeight="26.0" prefWidth="627.0" promptText="Search" styleClass="searchField" />
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+            <Tab text="Reports">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="209.0" layoutY="15.0" text="Report Creating Tool" textFill="#f4eee0">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <effect>
+                              <DropShadow spread="0.65">
+                                 <color>
+                                    <Color red="0.3235763609409332" green="0.16194932162761688" blue="0.3263157904148102" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </Label>
+                        <VBox layoutX="63.0" layoutY="70.0" prefHeight="100.0" prefWidth="211.0" styleClass="contentBox">
+                           <children>
+                              <Label text="Beginning date:" textFill="#f4eee0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="datePickerFrom" focusTraversable="false" onMouseClicked="#clearReportErrorLabel" prefHeight="32.0" prefWidth="207.0" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="379.0" layoutY="70.0" prefHeight="100.0" prefWidth="210.0" styleClass="contentBox">
+                           <children>
+                              <Label text="End date:" textFill="#f4eee0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="datePickerTo" focusTraversable="false" onMouseClicked="#clearReportErrorLabel" prefHeight="32.0" prefWidth="207.0" />
+                           </children>
+                        </VBox>
+                        <AnchorPane layoutX="128.0" layoutY="194.0" prefHeight="250.0" prefWidth="391.0" styleClass="contentBox">
+                           <children>
+                              <Button layoutX="77.0" layoutY="14.0" mnemonicParsing="false" onAction="#writeOffedProductsReportByReasonPressed" prefWidth="246.0" styleClass="reportButton" text="Write-Offed Products by reason Report" />
+                              <Button layoutX="78.0" layoutY="56.0" mnemonicParsing="false" onAction="#writeOffedProductsReportPressed" prefHeight="34.0" prefWidth="246.0" styleClass="reportButton" text="Write-Offed Products Report" />
+                              <Button layoutX="77.0" layoutY="147.0" mnemonicParsing="false" onAction="#pendingOrdersReportPressed" prefWidth="246.0" styleClass="reportButton" text="Pending orders Report" />
+                              <Button layoutX="78.0" layoutY="101.0" mnemonicParsing="false" onAction="#completedOrdersReportPressed" prefWidth="246.0" styleClass="reportButton" text="Completed orders Report" />
+                              <Button layoutX="78.0" layoutY="190.0" mnemonicParsing="false" onAction="#suppliersReportPressed" prefWidth="246.0" styleClass="reportButton" text="Suppliers Report" />
+                           </children>
+                        </AnchorPane>
+                        <Label fx:id="incorrectDatesReportsLabel" layoutX="274.0" layoutY="50.0" text="INCORRECT DATES" textFill="#cf2e2e" visible="false">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children></AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Settings">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" styleClass="contentBox">
+                           <children>
+                              <Label styleClass="passwordLabel" text="Change password">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="10.0" />
+                                 </padding>
+                              </Label>
+                              <PasswordField fx:id="newPassword" onKeyTyped="#passwordEntered" promptText="Enter new password" styleClass="inputField" />
+                              <PasswordField fx:id="repeatPassword" onKeyTyped="#passwordEntered" promptText="Repeat password" styleClass="inputField" />
+                              <Label fx:id="errorPasswordLabel" textFill="#a62323">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <Button fx:id="changePasswordButton" mnemonicParsing="false" onAction="#updatePassword" style="-fx-background-color: #f4eee0;" styleClass="newPassword" text="Change" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="expiryDatePolicyBox" layoutX="244.0" layoutY="14.0" prefWidth="394.0" styleClass="contentBox">
+                           <children>
+                              <Label style="-fx-text-fill: #f4eee0;" text="Expiry date policy">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="110.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton focusTraversable="false" layoutX="148.0" layoutY="63.0" mnemonicParsing="false" onAction="#expiryDatePolicyChanged" styleClass="settingsRadioButton" text="Do not write-off" />
+                              <RadioButton focusTraversable="false" mnemonicParsing="false" onAction="#expiryDatePolicyChanged" styleClass="settingsRadioButton" text="Notify after write-off" />
+                              <RadioButton focusTraversable="false" mnemonicParsing="false" onAction="#expiryDatePolicyChanged" styleClass="settingsRadioButton" text="Ask before write-off products" />
+                              <RadioButton focusTraversable="false" mnemonicParsing="false" onAction="#expiryDatePolicyChanged" styleClass="settingsRadioButton" text="Write-off without notifying" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="databaseClearPolicyBox" alignment="TOP_CENTER" layoutX="244.0" layoutY="163.0" prefHeight="288.0" prefWidth="395.0" styleClass="contentBox">
+                           <children>
+                              <Label text="Database clear policy" textFill="#f4eee0">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="20.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="Select after how long order details will be deleted" textFill="#f4eee0" />
+                              <ChoiceBox fx:id="orderDetailsChoiceBox" focusTraversable="false" prefWidth="150.0" styleClass="settingsChoiceBox">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="5.0" />
+                                 </VBox.margin>
+                                  <items>
+                                      <FXCollections fx:factory="observableArrayList">
+                                          <String fx:value="Do Not Delete" />
+                                          <String fx:value="3 Months" />
+                                          <String fx:value="6 Months" />
+                                          <String fx:value="1 Year" />
+                                      </FXCollections>
+                                  </items></ChoiceBox>
+                              <Label layoutX="10.0" layoutY="52.0" text="Select after how long orders history will be deleted" textFill="#f4eee0" />
+                              <ChoiceBox fx:id="orderHistoryChoiceBox" focusTraversable="false" layoutX="65.0" layoutY="74.0" prefWidth="150.0" styleClass="settingsChoiceBox">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Do Not Delete" />
+                                       <String fx:value="3 Months" />
+                                       <String fx:value="6 Months" />
+                                       <String fx:value="1 Year" />
+                                    </FXCollections>
+                                 </items>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="5.0" />
+                                 </VBox.margin>
+                              </ChoiceBox>
+                              <Label layoutX="10.0" layoutY="120.0" text="Select after how long usage history will be deleted" textFill="#f4eee0" />
+                              <ChoiceBox fx:id="usageHistoryChoiceBox" focusTraversable="false" layoutX="10.0" layoutY="137.0" prefWidth="150.0" styleClass="settingsChoiceBox">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Do Not Delete" />
+                                       <String fx:value="3 Months" />
+                                       <String fx:value="6 Months" />
+                                       <String fx:value="1 Year" />
+                                    </FXCollections>
+                                 </items>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="5.0" />
+                                 </VBox.margin>
+                              </ChoiceBox>
+                           </children></VBox>
+                        <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="226.0" prefHeight="229.0" prefWidth="211.0" styleClass="contentBox">
+                           <children>
+                              <Label text="Erase Data" textFill="#f4eee0">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="20.0" />
+                                 </padding>
+                              </Label>
+                              <PasswordField fx:id="eraseAdminInputField" promptText="Input admin`s password" styleClass="inputField" />
+                              <Label prefHeight="78.0" prefWidth="130.0" text="*erasing data wil delete all warehouse, write-off and use products" textAlignment="CENTER" textFill="#f4eee0" wrapText="true" />
+                              <Button mnemonicParsing="false" onAction="#eraseButtonPressed" styleClass="eraseButton" text="Erase">
+                                 <VBox.margin>
+                                    <Insets top="25.0" />
+                                 </VBox.margin></Button>
+                           </children></VBox>
+                     </children></AnchorPane>
+                </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="500.0" prefWidth="148.0" styleClass="logoPane" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="155.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="32.0" layoutY="462.0" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="24.0" prefWidth="84.0" styleClass="exitButton" text="Exit" />
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

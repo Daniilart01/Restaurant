@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="230.0" prefWidth="339.0" style="-fx-background-color: #393646;"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.nure.restaurant.LoginController">
+    <Button layoutX="-39.0" layoutY="-123.0" mnemonicParsing="false" text="Button"/>
+    <Button fx:id="loginButton" layoutX="133.0" layoutY="174.0" mnemonicParsing="false" onAction="#login"
+            prefHeight="25.0" prefWidth="73.0" styleClass="loginButton" stylesheets="@styles.css" text="Login"/>
+    <Label layoutX="26.0" layoutY="27.0" text="AUTHORIZATION" textFill="#f4eee0">
+        <font>
+            <Font name="Georgia" size="17.0"/>
+        </font>
+    </Label>
+    <BorderPane layoutX="5.0" layoutY="152.0" prefHeight="18.0" prefWidth="332.0">
+        <center>
+            <Label fx:id="label" alignment="CENTER" textAlignment="CENTER" textFill="#f4eee0" wrapText="true"
+                   BorderPane.alignment="CENTER">
+                <font>
+                    <Font name="System Bold" size="12.0"/>
+                </font>
+            </Label>
+        </center>
+    </BorderPane>
+    <TextField fx:id="userName" cache="true" layoutX="18.0" layoutY="62.0" styleClass="inputField"
+               stylesheets="@styles.css"/>
+    <Label fx:id="usernameLabel" layoutX="23.0" layoutY="67.0" onMousePressed="#usernamePressed" prefHeight="32.0"
+           prefWidth="61.0" styleClass="loginInfoLabel" stylesheets="@styles.css" text="Username:" textFill="#6d5d6e"/>
+    <PasswordField fx:id="password" layoutX="18.0" layoutY="113.0" prefHeight="38.0" prefWidth="159.0"
+                   styleClass="inputField" stylesheets="@styles.css"/>
+    <Label fx:id="passwordLabel" layoutX="23.0" layoutY="124.0" onMousePressed="#passwordPressed" prefHeight="17.0"
+           prefWidth="61.0" styleClass="loginInfoLabel" stylesheets="@styles.css" text="Password:" textFill="#6d5d6e"/>
+    <ImageView fitHeight="138.0" fitWidth="159.0" layoutX="191.0" layoutY="18.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@logo.png"/>
+    </ImageView>
+    <Button layoutX="315.0" layoutY="1.0" mnemonicParsing="false" onAction="#closeButtonPressed" prefHeight="0.0"
+            prefWidth="24.0" styleClass="closeButton" stylesheets="@styles.css" text="X">
+        <font>
+          <Font name="System Bold" size="9.0"/>
+        </font>
+    </Button>
+    <Hyperlink layoutX="128.0" layoutY="206.0" onAction="#forgotPasswordPressed" text="Forgot password?"
+               textFill="#f4eee0">
+        <font>
+          <Font size="10.0"/>
+        </font>
+    </Hyperlink>
+</AnchorPane>
