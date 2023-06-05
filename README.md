@@ -10,3 +10,8 @@ First init:
 3. Start Release/Fast&Easy.exe manualy
 
 * Data/data.dat stores settings and can be deleted. In case of deletion it will be generated with default settings in app directory after next initialization.
+* Screenshots available in directory "Photos"
+* For sms authentication used service sms-fly with personal API-key. Messages to be sent on behalf of the application Fasy$Easy (registered alpha-name).
+* At the publishing stage, 20 messages are available on the balance of the sms-fly service.
+* For changing API-KEY input new key in file "JsonSender.java"
+* In case of troubles or for more info contact author: daniilart01@gmail.com
