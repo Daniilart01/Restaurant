@@ -89,6 +89,6 @@ BEGIN
 END;
 /
 
-INSERT INTO DBUSERS (username, user_password, user_number) values ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '380991854927');
+INSERT INTO DBUSERS (username, user_password, user_number) values ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'XXXXXXXXXXXX');
 
 COMMIT;
